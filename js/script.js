@@ -31,7 +31,7 @@ var yamlData,
         data.config = data.config || {};
 
         var WIDTH = $( window ).width(),
-            HEIGHT = 600,
+            HEIGHT = data.config.height || 600,
             color = d3.scale.category10();
 
         var force = d3.layout.force()
