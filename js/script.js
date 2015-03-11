@@ -14,7 +14,7 @@ $( document ).ready( function() {
             return {
                 source: _.findIndex( data.nodes, { id: link.source }),
                 target: _.findIndex( data.nodes, { id: link.target }),
-                href: link.href || false
+                href: link.href
             };
         });
     }
@@ -25,7 +25,7 @@ $( document ).ready( function() {
         console.log( data );
         data.config = data.config || {};
 
-        var WIDTH = 800,
+        var WIDTH = $( document ).width(),
             HEIGHT = 600,
             color = d3.scale.category10();
 
@@ -49,8 +49,22 @@ $( document ).ready( function() {
         var link = svg.selectAll( '.link' )
                     .data( data.links )
                     .enter()
-                        .append( 'line' )
-                        .attr( 'class', 'link' );
+                        .append( 'a' )
+                            .attr( 'xlink:href', function( d ) { return d.href; })
+                            .append( 'line' )
+                                .attr( 'data-has-href', function(d) { return !!d.href; })
+                                .attr( 'class', 'link' );
+
+        //TODO
+        var rect = svg.selectAll( 'rect' )
+                        .data( data.links )
+                        .enter()
+                        .append( 'rect' )
+                        .attr( 'width', 10 )
+                        .attr( 'height', 10 )
+                        .attr( 'x', 0 )
+                        .attr( 'y', 0 );
+            
 
         var node = svg.selectAll( '.node' )
                     .data( data.nodes )

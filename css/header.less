@@ -1,3 +1,5 @@
+@import "variables";
+
 .fullsize-header {
     background-image: url("//totallytessally.files.wordpress.com/2011/08/dscf1181.jpg");
     background-size: cover;
@@ -15,5 +17,32 @@
         width: 100%;
         color: white;
         padding: 1em;
+    }
+}
+
+.site-header {
+    height: 50px;
+    background: @brand-primary;
+    color: white;
+    display: flex;
+
+    padding: 0 1em;
+
+    a {
+        color: white;
+    }
+
+    .site-logo {
+        height: 50px;
+        background: lighten(@brand-primary, 10%);
+    }
+    .navbar {
+        ul {
+            list-style: none;
+            li {
+                display: inline-block;
+                padding-right: 1em;
+            }
+        }
     }
 }

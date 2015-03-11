@@ -2,6 +2,7 @@
 layout: page
 title:  "Docker Registry"
 categories: none
+image: "http://blog.docker.com/media/docker-whales-transparent.png"
 ---
 Develop an app using Docker containers with any language and any toolchain.
 

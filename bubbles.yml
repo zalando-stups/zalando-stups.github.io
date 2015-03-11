@@ -60,6 +60,7 @@ nodes:
 node_links:
   - source: "pierone"
     target: "iam"
+    href: "http://reddit.com"
   - source: "pierone"
     target: "kio"
   - source: "kio"
