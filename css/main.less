@@ -42,3 +42,14 @@ h4 {
     line-height: @h4-line-height;
     font-size: @h4-font-size;
 }
+
+a {
+    color: darken( @brand-primary, 20% );
+    &:visited {
+        color: darken( @brand-primary, 30% );
+    }
+    &:active,
+    &:hover {
+        color: darken( @brand-primary, 10% );
+    }
+}
