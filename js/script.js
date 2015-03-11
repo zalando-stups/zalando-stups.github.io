@@ -1,8 +1,11 @@
 $( document ).ready( function() {
     $( '[data-width="full"]' ).css({
-        width: $(document).width()
+        width: $(window).width()
     });
 });
+
+var yamlData,
+    timeout = false;
 
 (function(_, yml, d3) {
     d3.ns.prefix.xlink = 'http://www.w3.org/1999/xlink';
@@ -20,12 +23,14 @@ $( document ).ready( function() {
     }
 
     function render( data ) {
-        
+        if ( !data.links ) {
+            yamlData = data;
+        }
         data.links = preprocessLinks( data );
         console.log( data );
         data.config = data.config || {};
 
-        var WIDTH = $( document ).width(),
+        var WIDTH = $( window ).width(),
             HEIGHT = 600,
             color = d3.scale.category10();
 
@@ -42,9 +47,15 @@ $( document ).ready( function() {
                         .links( data.links )
                         .start();
 
-        var svg = d3.select( 'svg' )
-                    .attr( 'width', WIDTH )
-                    .attr( 'height', HEIGHT );
+        d3.select( '#graph' )
+            .select( 'svg' )
+            .remove();
+        var svg = d3.select( '#graph' )
+                    .append( 'svg' )
+                        .attr( 'xmlns', 'http://www.w3.org/2000/svg')
+                        .attr( 'class', 'graph')
+                        .attr( 'width', WIDTH )
+                        .attr( 'height', HEIGHT );
 
         var link = svg.selectAll( '.link' )
                     .data( data.links )
@@ -56,14 +67,14 @@ $( document ).ready( function() {
                                 .attr( 'class', 'link' );
 
         //TODO
-        var rect = svg.selectAll( 'rect' )
-                        .data( data.links )
-                        .enter()
-                        .append( 'rect' )
-                        .attr( 'width', 10 )
-                        .attr( 'height', 10 )
-                        .attr( 'x', 0 )
-                        .attr( 'y', 0 );
+        // var rect = svg.selectAll( 'rect' )
+        //                 .data( data.links )
+        //                 .enter()
+        //                 .append( 'rect' )
+        //                 .attr( 'width', 10 )
+        //                 .attr( 'height', 10 )
+        //                 .attr( 'x', 0 )
+        //                 .attr( 'y', 0 );
             
 
         var node = svg.selectAll( '.node' )
@@ -93,5 +104,20 @@ $( document ).ready( function() {
             });
         });
     }
+
+    $( window ).resize( function() {
+        $( "svg" ).children().remove();
+        
+        if ( timeout ) {
+            clearTimeout( timeout );
+            timeout = false;
+        }
+        timeout = setTimeout( function() {
+            (function() {
+                console.log( 'rerender!', $(window).width() );
+                render( yamlData );
+            })();
+        });
+    });
 
 })( _, YAML, d3 );
