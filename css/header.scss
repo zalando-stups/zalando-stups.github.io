@@ -1,3 +1,5 @@
+---
+---
 @import "variables";
 
 .fullsize-header {
@@ -22,7 +24,7 @@
 
 .site-header {
     height: 50px;
-    background: @brand-primary;
+    background: $brand-primary;
     color: white;
     display: flex;
 
@@ -34,7 +36,7 @@
 
     .site-logo {
         height: 50px;
-        background: lighten(@brand-primary, 10%);
+        background: lighten($brand-primary, 10%);
     }
     .navbar {
         ul {

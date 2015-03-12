@@ -1,0 +1,28 @@
+---
+---
+@import "variables";
+
+.graph {
+    box-shadow: inset 0px 0px 6px;
+
+    .link {
+        stroke: #888;
+        stroke-width: 5px;
+    }
+
+    rect {
+        fill: red;
+    }
+
+    .node {
+        circle {
+            stroke: white;
+            stroke-width: 2px;
+        }
+        text {
+            fill: white;
+            font-size: 11px;
+            text-anchor: middle;
+        }
+    }
+}

@@ -14,11 +14,10 @@ contacts:
   - name: "Henning Jacobs"
     email: henning.jacobs@zalando.de
 
+sass:
+  sass_dir: css
 
-# Plugins
-gems: ['jekyll-less', 'therubyracer']
-
-permalink: "/:title.html"
+permalink: "/:title"
 
 # Build settings
 markdown: kramdown
