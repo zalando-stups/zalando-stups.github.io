@@ -14,7 +14,7 @@ nodes:
   - name: "pierone"
     id: "pierone"
     aka: "Docker Registry"
-    href: "/docker-registry.html"
+    href: "/docker-registry"
   - name: "kio"
     id: "kio"
     aka: "App Repository"

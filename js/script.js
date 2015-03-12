@@ -10,7 +10,7 @@ var yamlData,
 (function(_, yml, d3) {
     d3.ns.prefix.xlink = 'http://www.w3.org/1999/xlink';
 
-    yml.load( './bubbles.yml', render );
+    yml.load( '/bubbles.yml', render );
 
     function preprocessLinks( data ) {
         return _.map( data.node_links, function( link ) {
@@ -66,15 +66,41 @@ var yamlData,
                                 .attr( 'data-has-href', function(d) { return !!d.href; })
                                 .attr( 'class', 'link' );
 
-        //TODO
-        // var rect = svg.selectAll( 'rect' )
-        //                 .data( data.links )
-        //                 .enter()
-        //                 .append( 'rect' )
-        //                 .attr( 'width', 10 )
-        //                 .attr( 'height', 10 )
-        //                 .attr( 'x', 0 )
-        //                 .attr( 'y', 0 );
+        var infobox = svg
+                        .append( 'g' )
+                        .attr( 'class', 'infobox' )
+                        .attr( 'transform', 'translate(10,10)' );
+
+        infobox
+            .append( 'rect' )
+            .attr( 'rx', 2 )
+            .attr( 'ry', 2 )
+            .attr( 'x', 0 )
+            .attr( 'y', 0 )
+            .attr( 'width', 200 )
+            .attr( 'height', 100 );
+
+        var infoHeadline = infobox
+                            .append( 'text' )
+                            .attr( 'class', 'infobox-headline')
+                            .attr( 'transform', 'translate(10, 20)' )
+                            .text( 'Project' );
+
+        var infoLinkWrapper = infobox
+                            .append( 'a' )
+                            .attr( 'target', '_blank' )
+                            .attr( 'xlink:href', 'http://reddit.com' );
+        var infoLink = infoLinkWrapper
+                            .append( 'text' )
+                            .attr( 'class', 'infobox-link' )
+                            .attr( 'transform', 'translate( 10, 40 )' )
+                            .text( 'Link' );
+
+        var infoDesc = infobox
+                            .append( 'text' )
+                            .attr( 'class', 'infobox-desc' )
+                            .attr( 'transform', 'translate(10, 70)' )
+                            .text( 'Description' );
             
 
         var node = svg.selectAll( '.node' )
@@ -83,6 +109,14 @@ var yamlData,
                         .append( 'g' )
                         .call( force.drag )
                         .attr( 'class', 'node' );
+
+        node
+        .on( 'mouseover', function(d) {
+            infoDesc.text( d.aka );
+            infoHeadline.text( d.name );
+            infoLink.text( d.href ? 'Link' : '' )
+            infoLinkWrapper.attr( 'xlink:href', d.href );
+        });
 
         node.append( 'circle')
             .attr( 'fill', function( d ) { return color( d.type ); })
@@ -117,7 +151,7 @@ var yamlData,
                 console.log( 'rerender!', $(window).width() );
                 render( yamlData );
             })();
-        });
+        }, 100 );
     });
 
 })( _, YAML, d3 );

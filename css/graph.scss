@@ -10,8 +10,26 @@
         stroke-width: 5px;
     }
 
-    rect {
-        fill: red;
+    .infobox {
+        fill: #333;
+
+        text {
+            font-size: 12px;
+        }
+
+        .infobox-headline {
+            fill: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .infobox-link {
+            fill: white;
+        }
+
+        .infobox-desc {
+            fill: white;
+        }
     }
 
     .node {
