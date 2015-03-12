@@ -135,7 +135,6 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages (= 33)
-  jekyll
-  jekyll-less
+  jekyll-less (= 0.0.4)
   json
-  therubyracer
+  therubyracer (= 0.12.1)
