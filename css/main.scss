@@ -46,6 +46,7 @@ h4 {
 }
 
 a {
+    transition: .2s linear color;
     color: darken( $brand-primary, 20% );
     &:visited {
         color: darken( $brand-primary, 30% );
