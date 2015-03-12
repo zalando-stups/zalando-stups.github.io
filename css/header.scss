@@ -3,7 +3,7 @@
 @import "variables";
 
 .fullsize-header {
-    background-image: url("//totallytessally.files.wordpress.com/2011/08/dscf1181.jpg");
+    background-image: url("/img/zalando-packet.jpg");
     background-size: cover;
     background-position: 50%;
     width: 100%;
@@ -15,7 +15,7 @@
     text-align: center;
 
     h1 {
-        background: rgba(255, 119, 24, .8);
+        background: fade-out( $brand-primary, 0.2 );
         width: 100%;
         color: white;
         padding: 1em;
