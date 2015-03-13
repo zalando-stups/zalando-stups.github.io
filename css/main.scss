@@ -14,6 +14,14 @@ body {
     margin: 0;
     color: #111;
     font-size: $base-font-size;
+    line-height: $base-line-height;
+}
+
+p {
+    &.lead {
+        font-size: $h3-font-size;
+        line-height: $h3-line-height;
+    }
 }
 
 h1,

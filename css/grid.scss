@@ -7,18 +7,23 @@ $gutter: 1em;
 .grid {
     width: 100%;
     display: flex;
+    display: -webkit-flex;
 
     @media( max-width: $bp-mobile ) {
         flex-direction: column;
+        -webkit-flex-direction: column;
         .col-center {
             align-items: center;
+            -webkit-align-items: center;
         }
         .row-center {
             align-self: center;
+            -webkit-align-self: center;
         }
     }
     @media( min-width: $bp-mobile ) {
         flex-direction: row;
+        -webkit-flex-direction: row;
     }
 
     &.with-gutter {
@@ -45,8 +50,10 @@ $gutter: 1em;
         }
 
         flex: 1;
+        -webkit-flex: 1;
         max-width: 100%;
         align-self: flex-start;
+        -webkit-align-self: flex-start;
 
         // 8 column grid
         &.col-1-8 {
@@ -79,22 +86,28 @@ $gutter: 1em;
 
         &.col-top {
             align-self: flex-start;
+            -webkit-align-self: flex-start;
         }
         &.col-center {
             align-self: center;
+            -webkit-align-self: center;
         }
         &.col-bottom {
             align-self: flex-end;
+            -webkit-align-self: flex-end;
         }
 
         &.row-top {
             align-items: flex-start;
+            -webkit-align-items: flex-start;
         }
         &.row-bottom {
             align-items: flex-end;
+            -webkit-align-items: flex-end;
         }
         &.row-center {
             align-items: center;
+            -webkit-align-items: center;
         }
     }
 }

@@ -1,22 +1,11 @@
 <div class="categories">
-    {% for category in site.categories %}
-    <div class="category">
-        <header>
-            <h2>{{category | first}}</h2>
-        </header>
-        <div class="category-items">
-        {% for posts in category %}
-            {% for post in posts %}
-                {% if post.url %}
-                    <div class="category-item">
-                        <h3 class="category-item-headline">{{post.title}}</h3>
-                        <a href="{{post.url}}">Link</a>
-                        {{ post.excerpt }}
-                    </div>
-                {% endif %}
-            {% endfor %}
-        {% endfor %}
-        </div>
-    </div>
+    {% for post in site.posts %}
+        {% if post.url %}
+            <div class="category-item">
+                <h3 class="category-item-headline">{{post.title}}</h3>
+                <a href="{{post.url}}">Link</a>
+                {{ post.excerpt }}
+            </div>
+        {% endif %}
     {% endfor %}
 </div>
