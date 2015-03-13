@@ -8,12 +8,13 @@
     background-size: cover;
     background-position: 50%;
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     background-repeat: no-repeat;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    -webkit-text-align: center;
 
     h1 {
         background: fade-out( $brand-primary, 0.2 );

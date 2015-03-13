@@ -1,0 +1,16 @@
+---
+layout: page
+title:  "Pier One"
+categories: stups
+image: "http://blog.docker.com/media/docker-whales-transparent.png"
+---
+
+The Docker registry.
+
+Differences to Artifactory or the regular Docker registry are:
+
+* Immutable tags and images
+* OAuth Support
+* S3 Support
+
+[View on Github](https://github.com/zalando-stups/pierone)
