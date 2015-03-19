@@ -59,6 +59,9 @@ nodes:
     id: "iam"
     aka: "Identity Provider"
     type: "aws"
+  - name: "Mai"
+    id: "mai"
+    aka: "AWS SAML Login CLI"
 
 node_links:
   - source: "pierone"
@@ -88,3 +91,5 @@ node_links:
     target: "sevenseconds"
   - source: "kio"
     target: "twintip"
+  - source: "mai"
+    target: "iam"
