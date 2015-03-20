@@ -32,7 +32,8 @@ nodes:
     href: "https://github.com/zalando-stups/magnificent"
   - name: "fullstop"
     id: "fullstop"
-    aka: "Police"
+    aka: "Audit reporting"
+    href: "https://github.com/zalando-stups/fullstop"
   - name: "sevenseconds"
     id: "sevenseconds"
     aka: "AWS Account Configurator"
@@ -66,7 +67,6 @@ nodes:
 node_links:
   - source: "pierone"
     target: "iam"
-    href: "http://reddit.com"
   - source: "pierone"
     target: "kio"
   - source: "kio"
