@@ -63,6 +63,12 @@ nodes:
   - name: "Mai"
     id: "mai"
     aka: "AWS SAML Login CLI"
+  - name: "Senza"
+    id: "senza"
+    aka: "Deployment tool"
+  - name: "Piu"
+    id: "piu"
+    aka: "CLI for even"
 
 node_links:
   - source: "pierone"
@@ -93,3 +99,7 @@ node_links:
     target: "twintip"
   - source: "mai"
     target: "iam"
+  - source: "piu"
+    target: "even"
+  - source: "senza"
+    target: "taupage"
