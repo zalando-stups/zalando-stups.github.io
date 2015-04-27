@@ -5,8 +5,12 @@
 .site-footer {
     background: $color-base;
     color: #eee;
-    .wrapper {
-        margin-bottom: 0;
+    width: 100%;
+    > .grid {
+        margin: 0 auto;
+        margin-top: $base-line-height;
+        padding-bottom: $base-line-height;
+        max-width: 960px;
     }
     a {
         color: #eee;

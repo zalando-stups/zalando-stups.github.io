@@ -6,42 +6,40 @@
     <script src="bower_components/yamljs/bin/yaml.js"></script>
     <script src="js/script.js"></script>
     
-    <div class="wrapper">
-        <div class="grid with-gutter">
-            <div class="grid-col col-1-3">
-                <h4>What.</h4>
-                {{ site.description }}
-            </div>
-            <div class="grid-col col-1-3">
-                <h4>Elsewhere</h4>
-                <ul>
-                    {% if site.github_username %}
-                    <li>
-                        <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% if site.twitter_username %}
-                    <li>
-                        <a href="https://twitter.com/{{ site.twitter_username }}">@{{ site.twitter_username }}
-                        </a>
-                    </li>
-                    {% endif %}
-                    <li>
-                        <a href="http://tech.zalando.com/">Zalando Tech Blog</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="grid-col col-1-3">
-                <h4>Contact</h4>
-                {% for contact in site.contacts %}
-                    <li>
-                        <a href="mailto:{{contact.email}}">{{ contact.name}}</a>
-                    </li>
-                {% endfor %}
-            </div>
-
+    <div class="grid">
+        <div class="grid-col col-1-3">
+            <h4>What.</h4>
+            {{ site.description }}
         </div>
+        <div class="grid-col col-1-3">
+            <h4>Elsewhere</h4>
+            <ul>
+                {% if site.github_username %}
+                <li>
+                    <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}
+                    </a>
+                </li>
+                {% endif %}
+                {% if site.twitter_username %}
+                <li>
+                    <a href="https://twitter.com/{{ site.twitter_username }}">@{{ site.twitter_username }}
+                    </a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="http://tech.zalando.com/">Zalando Tech Blog</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="grid-col col-1-3">
+            <h4>Contact</h4>
+            {% for contact in site.contacts %}
+                <li>
+                    <a href="mailto:{{contact.email}}">{{ contact.name}}</a>
+                </li>
+            {% endfor %}
+        </div>
+
     </div>
 </footer>
