@@ -36,6 +36,7 @@
     }
 
     .site-logo {
+        @include transition(transform);
         position: relative;
         margin: 0 auto;
         width: 50px;
@@ -45,6 +46,10 @@
         border-radius: 100%;
         background-image: url(/img/stups_icon.png);
         background-size: cover;
+        &:hover {
+            transform: rotateZ(40deg);
+        }
 
+        
     }
 }

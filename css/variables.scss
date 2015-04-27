@@ -34,3 +34,9 @@ $h4-lines: 1;
 $h4-line-height: $h4-line * $h4-lines;
 $h4-margin-top: 1 * $h4-line;
 $h4-margin-bottom: 1 * $h4-line;
+
+@mixin transition($properties...) {
+    transition-property: $properties;
+    transition-duration: .2s;
+    transition-timing-function: ease;
+}
