@@ -14,4 +14,22 @@
             object-fit: cover;
         }
     }
+    .post-content {
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+
+        ul,
+        ol {
+            margin: $base-line-height 0;
+        }
+
+        + p {
+            margin-top: 2*$base-line-height;
+        }
+
+        .footnotes {
+            border-top: 1px solid $color-base;
+            margin-top: 2*$base-line-height;
+        }
+    }
 }

@@ -3,6 +3,12 @@
 @import "variables";
 
 .site-footer {
-    background: $brand-primary;
-    color: white;
+    background: $color-base;
+    color: #eee;
+    .wrapper {
+        margin-bottom: 0;
+    }
+    a {
+        color: #eee;
+    }
 }

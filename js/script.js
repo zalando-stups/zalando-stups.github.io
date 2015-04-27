@@ -27,12 +27,10 @@ var yamlData,
             yamlData = data;
         }
         data.links = preprocessLinks( data );
-        console.log( data );
         data.config = data.config || {};
 
         var WIDTH = $( window ).width(),
-            HEIGHT = data.config.height || 600,
-            color = d3.scale.category10();
+            HEIGHT = data.config.height || 600;
 
         var force = d3.layout.force()
                         .size([ WIDTH, HEIGHT ])
@@ -119,7 +117,7 @@ var yamlData,
         });
 
         node.append( 'circle')
-            .attr( 'fill', function( d ) { return color( d.type ); })
+            .attr('class', function(d) { return 'type-'+d.type; })
             .attr( 'r', 30 );
         node.append( 'a' )
             .attr( 'target', '_blank' )

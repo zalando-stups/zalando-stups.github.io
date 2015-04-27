@@ -9,6 +9,10 @@
 @import "category.css";
 @import "graph.css";
 
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
@@ -54,13 +58,20 @@ h4 {
 }
 
 a {
-    transition: .2s linear color;
-    color: darken( $brand-primary, 20% );
-    &:visited {
-        color: darken( $brand-primary, 30% );
-    }
-    &:active,
+    // beautiful link underlines
+    color: $color-accent;
+    text-decoration: none;
+    background-image: linear-gradient(  to top,
+                                        rgba(0,0,0,0) 6%,
+                                        currentColor 6%,
+                                        currentColor 10%,
+                                        rgba(0,0,0,0) 10%);
+
     &:hover {
-        color: darken( $brand-primary, 10% );
+        background-image: linear-gradient(  to top,
+                                        rgba(0,0,0,0) 6%,
+                                        currentColor 6%,
+                                        currentColor 14%,
+                                        rgba(0,0,0,0) 14%);
     }
 }

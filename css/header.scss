@@ -2,57 +2,49 @@
 ---
 @import "variables";
 
-.fullsize-header {
-    background-color: $brand-primary;
-    background-image: url("/img/zalando-packet.jpg");
-    background-size: cover;
-    background-position: 50%;
-    width: 100%;
-    height: 50vh;
-    background-repeat: no-repeat;
+.home-header {
     text-align: center;
-    
-    display: flex;
-    display: -webkit-flex;
-    align-items: center;
-    -webkit-align-items: center;
-    justify-content: center;
-    -webkit-justify-content: center;
-    
-
+    a {
+        text-decoration: none;
+    }
+    .header-logo {
+        background: $color-base;
+        color: #eee;
+        padding: $base-line-height;
+        img {
+            background: white;
+            display: block;
+            border-radius: 100%;
+            margin: 0 auto;
+            width: 100px;
+        }
+    }
     h1 {
-        background: fade-out( $brand-primary, 0.2 );
         width: 100%;
-        color: white;
-        padding: 1em;
+        color: black;
     }
 }
 
 .site-header {
     height: 50px;
-    background: $brand-primary;
+    background: $color-base;
     color: white;
     display: flex;
     display: -webkit-flex;
-
     padding: 0 1em;
 
     a {
-        color: white;
+        text-decoration: none;
     }
 
     .site-logo {
+        width: 50px;
         height: 50px;
-        background: lighten($brand-primary, 10%);
-    }
-    .navbar {
-        ul {
-            list-style: none;
-            margin-top: .5em;
-            li {
-                display: inline-block;
-                padding-right: 1em;
-            }
-        }
+        margin-top: 25px;
+        background: white;
+        border-radius: 100%;
+        background-image: url(/img/stups_icon.png);
+        background-size: cover;
+
     }
 }

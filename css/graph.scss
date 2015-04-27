@@ -36,8 +36,12 @@
     .node {
         cursor: move;
         circle {
+            fill: $color-base;
             stroke: white;
             stroke-width: 2px;
+            &.type-aws {
+                fill: $color-accent;
+            }
         }
         text {
             fill: white;

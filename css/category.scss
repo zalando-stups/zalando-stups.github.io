@@ -2,7 +2,11 @@
 ---
 @import "variables";
 
-
+.categories {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
 .category {
     margin-top: 3em;
 
@@ -18,7 +22,7 @@
 
 
 .category-item {
-    width: 210px;
+    width: 300px;
     display: inline-block;
     padding: 0 10px 10px 10px;
     margin: 10px 10px 0 0;
@@ -27,7 +31,8 @@
 
     .category-item-headline {
         text-align: center;
-        border-bottom: 1px solid black;
-        padding-bottom: .5em;
+    }
+    p {
+        text-align: left;
     }
 }
