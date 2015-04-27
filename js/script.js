@@ -36,6 +36,7 @@ function findLinksFor(links, node) {
         data.links = preprocessLinks( data );
         data.config = data.config || {};
 
+
         var WIDTH = $( window ).width(),
             HEIGHT = data.config.height || 600;
 
@@ -55,6 +56,7 @@ function findLinksFor(links, node) {
         d3.select( '#graph' )
             .select( 'svg' )
             .remove();
+        d3.select('.d3-tip').remove();
         var svg = d3.select( '#graph' )
                     .append( 'svg' )
                         .attr( 'xmlns', 'http://www.w3.org/2000/svg')
