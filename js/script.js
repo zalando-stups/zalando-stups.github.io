@@ -7,7 +7,15 @@ $( document ).ready( function() {
 var yamlData,
     timeout = false;
 
+function findLinksFor(links, node) {
+    return links
+            .filter(function(link) {
+                return link.source === node  || link.target === node;
+            });
+}
+
 (function(_, yml, d3) {
+    'use strict';
     d3.ns.prefix.xlink = 'http://www.w3.org/1999/xlink';
 
     yml.load( '/bubbles.yml', render );
@@ -16,8 +24,7 @@ var yamlData,
         return _.map( data.node_links, function( link ) {
             return {
                 source: _.findIndex( data.nodes, { id: link.source }),
-                target: _.findIndex( data.nodes, { id: link.target }),
-                href: link.href
+                target: _.findIndex( data.nodes, { id: link.target })
             };
         });
     }
@@ -55,74 +62,68 @@ var yamlData,
                         .attr( 'width', WIDTH )
                         .attr( 'height', HEIGHT );
 
+        var tip = d3.tip().attr('class', 'd3-tip infobox').html(function(d) {
+            var github = d.github ? '<a href="'+d.github+'">Github</a>' : false;
+            var docs = d.docs ? '<a href="'+d.docs+'">Documentation</a>' : false;
+            var links = '<ul>';
+                links += docs ? '<li>'+docs+'</li>' : '';
+                links += github ? '<li>'+github+'</li>' : '';
+            links += '</ul';
+            var aka = '<div>'+d.aka+'</div>'; 
+            return  '<div>' +
+                        aka +
+                        links
+                    '</div>';
+        });
+        svg.call(tip);
+        svg.on('click', tip.hide);
+
+
         var link = svg.selectAll( '.link' )
                     .data( data.links )
                     .enter()
-                        .append( 'a' )
-                            .attr( 'xlink:href', function( d ) { return d.href; })
-                            .append( 'line' )
-                                .attr( 'data-has-href', function(d) { return !!d.href; })
-                                .attr( 'class', 'link' );
-
-        var infobox = svg
-                        .append( 'g' )
-                        .attr( 'class', 'infobox' )
-                        .attr( 'transform', 'translate(10,10)' );
-
-        infobox
-            .append( 'rect' )
-            .attr( 'rx', 2 )
-            .attr( 'ry', 2 )
-            .attr( 'x', 0 )
-            .attr( 'y', 0 )
-            .attr( 'width', 200 )
-            .attr( 'height', 100 );
-
-        var infoHeadline = infobox
-                            .append( 'text' )
-                            .attr( 'class', 'infobox-headline')
-                            .attr( 'transform', 'translate(10, 20)' )
-                            .text( 'Project' );
-
-        var infoLinkWrapper = infobox
-                            .append( 'a' )
-                            .attr( 'target', '_blank' )
-                            .attr( 'xlink:href', 'http://reddit.com' );
-        var infoLink = infoLinkWrapper
-                            .append( 'text' )
-                            .attr( 'class', 'infobox-link' )
-                            .attr( 'transform', 'translate( 10, 40 )' )
-                            .text( 'Link' );
-
-        var infoDesc = infobox
-                            .append( 'text' )
-                            .attr( 'class', 'infobox-desc' )
-                            .attr( 'transform', 'translate(10, 70)' )
-                            .text( 'Description' );
-            
+                        .append( 'line' )
+                            .attr( 'id', function(d) { return d.source.id + d.target.id; })
+                            .attr( 'class', 'link' );
 
         var node = svg.selectAll( '.node' )
                     .data( data.nodes )
                     .enter()
                         .append( 'g' )
                         .call( force.drag )
+                        .attr( 'id', function(d) {return d.id;})
                         .attr( 'class', 'node' );
-
+        
         node
         .on( 'mouseover', function(d) {
-            infoDesc.text( d.aka );
-            infoHeadline.text( d.name );
-            infoLink.text( d.href ? 'Link' : '' )
-            infoLinkWrapper.attr( 'xlink:href', d.href );
+            tip.show(d);
+            data.links.forEach(function(d) {
+                d3.select('#'+d.source.id+d.target.id).attr('class', 'link');
+                    d3.select('#'+d.source.id).attr('class', 'node');
+                    d3.select('#'+d.target.id).attr('class', 'node');
+            });
+            findLinksFor(data.links, d)
+                .forEach(function(d) {
+                    d3.select('#'+d.source.id+d.target.id).attr('class', 'link is-connected');
+                    d3.select('#'+d.source.id).attr('class', 'node is-connected');
+                    d3.select('#'+d.target.id).attr('class', 'node is-connected');
+                });
+            d3.select('#'+d.id).attr('class', 'node is-hovered');
+        });
+
+        node
+        .on('mouseout', function(dnode) {
+            data.links.forEach(function(d) {
+                d3.select('#'+d.source.id+d.target.id).attr('class', 'link');
+                    d3.select('#'+d.source.id).attr('class', 'node');
+                    d3.select('#'+d.target.id).attr('class', 'node');
+            });
         });
 
         node.append( 'circle')
             .attr('class', function(d) { return 'type-'+d.type; })
             .attr( 'r', 30 );
-        node.append( 'a' )
-            .attr( 'target', '_blank' )
-            .attr( 'xlink:href', function( d ) { return d.href; })
-            .append( 'text' )
+        node.append( 'text' )
                 .text( function( d ) { return d.name; });
 
         force.on( 'tick', function() {
