@@ -124,7 +124,7 @@ function findLinksFor(links, node) {
 
         node.append( 'circle')
             .attr('class', function(d) { return 'type-'+d.type; })
-            .attr( 'r', 30 );
+            .attr( 'r', data.config.nodeRadius || 30 );
         node.append( 'text' )
                 .text( function( d ) { return d.name; });
 

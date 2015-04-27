@@ -1,14 +1,15 @@
 ---
 # https://github.com/mbostock/d3/wiki/Force-Layout#force
 config:
-  linkDistance: 150
+  nodeRadius: 45
+  linkDistance: 300
   linkStrength: 0.1
   friction: 0.9
-  charge: -300
-  gravity: 0.05
+  charge: -400
+  gravity: 0.025
   theta: 0.8
   alpha: 0.1
-  height: 600
+  height: 768
 
 nodes:
   - name: "Pier One"
