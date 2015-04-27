@@ -18,8 +18,8 @@
         font-size: $base-font-size;
         line-height: $base-line-height;
 
-        ul,
-        ol {
+        > ul,
+        > ol {
             margin: $base-line-height 0;
         }
 
