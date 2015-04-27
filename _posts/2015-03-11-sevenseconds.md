@@ -4,8 +4,7 @@ title: "Seven Seconds"
 categories: stups
 ---
 
-The AWS account configurator.
+Seven Seconds is a command line tool to configure AWS accounts for STUPS.
 
-[View on Github](https://github.com/zalando-stups/sevenseconds)
-
-[Read documention on Read the Docs](http://stups.readthedocs.org/en/latest/components/sevenseconds.html)
+* [View on Github](https://github.com/zalando-stups/sevenseconds)
+* [Read documention on Read the Docs](http://stups.readthedocs.org/en/latest/components/sevenseconds.html)
