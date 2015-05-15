@@ -37,7 +37,7 @@ nodes:
     aka: "Secret Fetcher"
     github: "https://github.com/zalando-stups/berry"
     docs: "https://stups.readthedocs.org/en/latest/components/berry.html"
-  - name: "fullstop."
+  - name: "fullstop"
     id: "fullstop"
     aka: "Audit reporting"
     github: "https://github.com/zalando-stups/fullstop"
