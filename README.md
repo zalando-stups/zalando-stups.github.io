@@ -7,7 +7,7 @@ This is the static site covering all of STUPS (STUPS to unleash penguin swarms) 
 
 ## Installation
 
-Get Ruby on your system. Then do
+Get Ruby on your system (`sudo apt-get install ruby ruby-dev` on Debian). Then do
 
     gem install jekyll therubyracer jekyll-less
 
@@ -29,7 +29,7 @@ The plan is as follows: For every one of our projects there will be one post in 
     image: "http://optional-image.com"
     ---
 
-Then, when you did this, you need to update `bubbles.yml`. This file is used to generate our project graph. If not existing, please add the new project to the `nodes` section. You may specify a `type`. Nodes of the same type will have the same color. If it has relationships to others, add those to `node_links`, using the `id`s of nodes. 
+Then, when you did this, you need to update `bubbles.yml`. This file is used to generate our project graph. If not existing, please add the new project to the `nodes` section. You may specify a `type`. Nodes of the same type will have the same color. If it has relationships to others, add those to `node_links`, using the `id`s of nodes.
 
 And, most importantly, add the newly generated link as `href` to the node!
 
