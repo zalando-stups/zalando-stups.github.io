@@ -19,6 +19,10 @@ You might need to use `sudo`, I don't know and neither do I care.
 
 will generate the site and watch for changes, regenerating it as needed.
 
+Running with Docker (to avoid installing Ruby, Jekyll & co):
+
+    docker run -d -v "$PWD:/src" -p 4000:4000 grahamc/jekyll serve -H 0.0.0.0
+
 ## Insert content
 
 The plan is as follows: For every one of our projects there will be one post in `_posts` directory. The naming scheme has to be `:year-:month-:day-:title.md`. The date might describe when it was finished or when we started the project, that's up to you. Use this [YAML front matter](http://jekyllrb.com/docs/frontmatter/):
